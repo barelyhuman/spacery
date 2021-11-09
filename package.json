@@ -1,0 +1,57 @@
+{
+  "name": "spacery",
+  "version": "0.0.0",
+  "description": "Space Modifier utilities for working with React",
+  "license": "MIT",
+  "repository": "barelyhuman/spacery",
+  "author": {
+    "name": "Reaper",
+    "email": "ahoy@barelyhuman.dev",
+    "url": "https://barelyhuman.dev"
+  },
+  "type": "module",
+  "types": "./index.d.ts",
+  "exports": "./dist/index.js",
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "build": "babel 'src' --out-dir=dist",
+    "prepare": "npm run build"
+  },
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "keywords": [
+    "react",
+    "component",
+    "components",
+    "util",
+    "utils",
+    "utilities",
+    "helper",
+    "helpers",
+    "spacer",
+    "margins",
+    "padding",
+    "padding"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "@types/react": "^16.9.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.7"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  }
+}
