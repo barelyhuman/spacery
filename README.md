@@ -4,7 +4,7 @@ Space Modifier utilities for working with React
 
 ## About
 
-This is my interpretation on how React Native UI LIB handles the Spacing modifiers and since I work with web a lot, it'll make it easier to have the same helpers on both places.
+This is my interpretation on how [React Native UI LIB](https://wix.github.io/react-native-ui-lib/) handles the Spacing modifiers and since I work with web a lot, it'll make it easier to have the same helpers on both places.
 
 ## Installation
 
