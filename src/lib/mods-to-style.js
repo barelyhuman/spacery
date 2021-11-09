@@ -1,7 +1,7 @@
-const marginsPattern = /(margin)[TBRLXY]*-/;
-const paddingsPattern = /(padding)[TBRLXY]*-/;
-const XPattern = /X$/;
-const YPattern = /Y$/;
+const marginsPattern = /(margin)[TBRLXY]*-/
+const paddingsPattern = /(padding)[TBRLXY]*-/
+const XPattern = /X$/
+const YPattern = /Y$/
 
 /**
  * @name modsToStyle
@@ -13,33 +13,33 @@ const YPattern = /Y$/;
  * @returns result.style
  * @returns result.santizedProps
  */
-export function modsToStyle(mods, dimensionUnit = "px") {
-  const style = {};
-  const sanitizedProps = { ...mods };
+export function modsToStyle (mods, dimensionUnit = 'px') {
+  const style = {}
+  const sanitizedProps = { ...mods }
   Object.keys(mods).forEach((key) => {
     if (!(marginsPattern.test(key) || paddingsPattern.test(key))) {
-      return;
+      return
     }
 
-    delete sanitizedProps[key];
+    delete sanitizedProps[key]
 
-    const _propSplit = key.split("-");
+    const _propSplit = key.split('-')
     const normalizedProp = _propSplit[0]
-      .replace(/T$/, "Top")
-      .replace(/L$/, "Left")
-      .replace(/B$/, "Bottom")
-      .replace(/R$/, "Right");
+      .replace(/T$/, 'Top')
+      .replace(/L$/, 'Left')
+      .replace(/B$/, 'Bottom')
+      .replace(/R$/, 'Right')
     if (XPattern.test(normalizedProp)) {
-      const _prop = normalizedProp.replace(XPattern, "");
-      style[_prop + "Left"] = _propSplit[1] + dimensionUnit;
-      style[_prop + "Right"] = _propSplit[1] + dimensionUnit;
+      const _prop = normalizedProp.replace(XPattern, '')
+      style[_prop + 'Left'] = _propSplit[1] + dimensionUnit
+      style[_prop + 'Right'] = _propSplit[1] + dimensionUnit
     } else if (YPattern.test(normalizedProp)) {
-      const _prop = normalizedProp.replace(YPattern, "");
-      style[_prop + "Top"] = _propSplit[1] + dimensionUnit;
-      style[_prop + "Bottom"] = _propSplit[1] + dimensionUnit;
+      const _prop = normalizedProp.replace(YPattern, '')
+      style[_prop + 'Top'] = _propSplit[1] + dimensionUnit
+      style[_prop + 'Bottom'] = _propSplit[1] + dimensionUnit
     } else {
-      style[normalizedProp] = _propSplit[1] + dimensionUnit;
+      style[normalizedProp] = _propSplit[1] + dimensionUnit
     }
-  });
-  return { style, sanitizedProps };
+  })
+  return { style, sanitizedProps }
 }
