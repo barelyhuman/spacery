@@ -41,6 +41,8 @@ The library can be used in various ways to give you the end result of being able
 Self-explanatory as to what the library does.
 Getting to how you can create the above `Box` component.
 
+## API
+
 ### Manually
 
 Not always needed unless you are working with a platform that needs you to change the dimension units from pixels to something else, let's say `rem` or an empty string for something like react-native
@@ -93,8 +95,6 @@ const Box = withSpacery(function ({ style, children, ...props }) {
 
 export default Box;
 ```
-
-## API
 
 ## License
 
