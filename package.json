@@ -12,6 +12,7 @@
   "type": "module",
   "types": "./index.d.ts",
   "exports": "./dist/index.js",
+  "main": "./dist/index.js",
   "engines": {
     "node": ">=12"
   },
