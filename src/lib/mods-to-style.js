@@ -3,6 +3,8 @@ const paddingsPattern = /(padding)[TBRLXY]*-/
 const XPattern = /X$/
 const YPattern = /Y$/
 
+const toDimension = (value, unit) => (unit ? value + unit : Number(value))
+
 /**
  * @name modsToStyle
  * @description convert given modifiers object of the form
@@ -31,14 +33,14 @@ export function modsToStyle (mods, dimensionUnit = 'px') {
       .replace(/R$/, 'Right')
     if (XPattern.test(normalizedProp)) {
       const _prop = normalizedProp.replace(XPattern, '')
-      style[_prop + 'Left'] = _propSplit[1] + dimensionUnit
-      style[_prop + 'Right'] = _propSplit[1] + dimensionUnit
+      style[_prop + 'Left'] = toDimension(_propSplit[1], dimensionUnit)
+      style[_prop + 'Right'] = toDimension(_propSplit[1], dimensionUnit)
     } else if (YPattern.test(normalizedProp)) {
       const _prop = normalizedProp.replace(YPattern, '')
-      style[_prop + 'Top'] = _propSplit[1] + dimensionUnit
-      style[_prop + 'Bottom'] = _propSplit[1] + dimensionUnit
+      style[_prop + 'Top'] = toDimension(_propSplit[1], dimensionUnit)
+      style[_prop + 'Bottom'] = toDimension(_propSplit[1], dimensionUnit)
     } else {
-      style[normalizedProp] = _propSplit[1] + dimensionUnit
+      style[normalizedProp] = toDimension(_propSplit[1], dimensionUnit)
     }
   })
   return { style, sanitizedProps }
