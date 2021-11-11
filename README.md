@@ -91,7 +91,9 @@ const Box = withSpacery(function ({ style, children, ...props }) {
       {children}
     </View>
   );
-});
+}, "");
+// empty string, so it doesn't add `px`
+// to the end of the units, like it would for the web style
 
 export default Box;
 ```
