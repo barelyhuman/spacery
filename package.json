@@ -1,6 +1,6 @@
 {
   "name": "spacery",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Space Modifier utilities for working with React",
   "license": "MIT",
   "repository": "barelyhuman/spacery",
