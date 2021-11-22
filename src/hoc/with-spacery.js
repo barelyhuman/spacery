@@ -1,5 +1,5 @@
 import React from 'react'
-import { modsToStyle } from '../lib/mods-to-style'
+import { modsToStyle } from '../lib/mods-to-style.js'
 
 export function withSpacery (Component, dimensionUnit) {
   return ({ style, ...props }) => {
