@@ -129,3 +129,49 @@ test('No dimension suffix', async (t) => {
   const { style } = modsToStyle(props, '')
   t.deepEqual(style, expected)
 })
+
+test('Test composed style', async (t) => {
+  const composedSet = [
+    {
+      props: {
+        'marginT-12': true,
+        'marginB-12': true,
+        'marginX-8': true
+      },
+      expected: {
+        marginLeft: 8,
+        marginRight: 8,
+        marginTop: 12,
+        marginBottom: 12
+      }
+    },
+    {
+      props: {
+        'marginT-12': true,
+        'marginX-8': true
+      },
+      expected: {
+        marginLeft: 8,
+        marginRight: 8,
+        marginTop: 12
+      }
+    },
+    {
+      props: {
+        'marginY-12': true,
+        'marginX-8': true
+      },
+      expected: {
+        marginLeft: 8,
+        marginRight: 8,
+        marginTop: 12,
+        marginBottom: 12
+      }
+    }
+  ]
+
+  composedSet.forEach((setItem) => {
+    const { style } = modsToStyle(setItem.props, '')
+    t.deepEqual(style, setItem.expected)
+  })
+})
