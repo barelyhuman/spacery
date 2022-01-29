@@ -2,52 +2,6 @@
   "name": "spacery",
   "version": "0.0.7",
   "description": "Space Modifier utilities for working with React",
-  "license": "MIT",
-  "repository": "barelyhuman/spacery",
-  "author": {
-    "name": "Reaper",
-    "email": "ahoy@barelyhuman.dev",
-    "url": "https://barelyhuman.dev"
-  },
-  "type": "module",
-  "types": "./index.d.ts",
-  "exports": {
-    ".": "./dist/index.js",
-    "./package.json": "./package.json"
-  },
-  "main": "./dist/index.js",
-  "engines": {
-    "node": ">=12"
-  },
-  "scripts": {
-    "prebuild": "rm -rf dist",
-    "build": "babel 'src' --out-dir=dist",
-    "prepare": "npm run build && husky install",
-    "test": "ava",
-    "fix": "npx standard --fix src/**/*.js",
-    "size": "GITHUB_TOKEN='' npx bundlesize",
-    "prepublishOnly": "npm run build"
-  },
-  "files": [
-    "dist",
-    "index.d.ts"
-  ],
-  "bundlesize": [
-    {
-      "path": "./dist/**/*.js",
-      "maxSize": "1 kB",
-      "compression": "brotli"
-    },
-    {
-      "path": "./dist/**/*.js",
-      "maxSize": "1 kB"
-    }
-  ],
-  "lint-staged": {
-    "*.js": [
-      "npx standard --fix"
-    ]
-  },
   "keywords": [
     "react",
     "component",
@@ -59,32 +13,82 @@
     "helpers",
     "spacer",
     "margins",
-    "padding",
     "padding"
   ],
-  "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.0.0",
-    "@types/react": "^16.9.2",
-    "ava": "^3.15.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^11.2.6",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+  "source": "src/index.js",
+  "repository": "barelyhuman/spacery",
+  "license": "MIT",
+  "author": {
+    "name": "Reaper",
+    "email": "ahoy@barelyhuman.dev",
+    "url": "https://barelyhuman.dev"
   },
-  "peerDependencies": {
-    "react": ">=16.7"
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./package": "./package.json",
+    "./package.json": "./package.json"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-react"
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./index.d.ts",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "prebuild": "rm -rf dist",
+    "build": "wrap",
+    "fix": "wrap --fix",
+    "prepare": "npm run build && husky install",
+    "prepublishOnly": "npm run build",
+    "size": "sizesnap",
+    "test": "ava"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npx standard --fix"
     ]
   },
   "ava": {
     "require": [
       "@babel/register"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "@barelyhuman/wrap": "^1.0.1",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@types/react": "^16.9.2",
+    "ava": "^3.15.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "microbundle": "^0.14.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "rollup": "^2.66.1",
+    "rollup-plugin-node-externals": "^3.1.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "terser": "^5.10.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.7"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "wrap": {
+    "inferExternal": true
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
     ]
   }
 }

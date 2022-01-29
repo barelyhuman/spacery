@@ -1,11 +1,3 @@
-import { ReactNode } from "react";
-
-export function Spacery(props: any): ReactNode;
-export function withSpacery(
-  Component: ReactNode,
-  dimensionUnit?: string
-): ReactNode;
-export function modsToStyle(
-  mods: any,
-  dimensionUnit?: string
-): { style: any; sanitizedProps: any };
+export * from './hoc/with-spacery.js';
+export * from './lib/mods-to-style.js';
+export * from './components/spacery.js';

@@ -1,9 +1,7 @@
-import avaTest from 'ava'
+import test from 'ava'
 import { modsToStyle } from '../src/lib/mods-to-style.js'
 
-const test = avaTest.serial
-
-test('Direction Props | Single', async (t) => {
+test('Direction Props | Single', t => {
   const props = {
     'marginT-8': true
   }
@@ -16,7 +14,7 @@ test('Direction Props | Single', async (t) => {
   t.deepEqual(style, expected)
 })
 
-test('Direction Props | Multiple', async (t) => {
+test('Direction Props | Multiple', t => {
   const props = {
     'marginT-8': true,
     'marginR-8': true,
@@ -35,7 +33,7 @@ test('Direction Props | Multiple', async (t) => {
   t.deepEqual(style, expected)
 })
 
-test('Axis Props | Single', async (t) => {
+test('Axis Props | Single', t => {
   const props = {
     'marginX-8': true
   }
@@ -49,7 +47,7 @@ test('Axis Props | Single', async (t) => {
   t.deepEqual(style, expected)
 })
 
-test('Axis Props | Multiple', async (t) => {
+test('Axis Props | Multiple', t => {
   const props = {
     'marginX-8': true,
     'marginY-8': true
@@ -66,7 +64,7 @@ test('Axis Props | Multiple', async (t) => {
   t.deepEqual(style, expected)
 })
 
-test('Axis Props + Dimension Props', async (t) => {
+test('Axis Props + Dimension Props', t => {
   const props = {
     'marginX-8': true,
     'marginT-8': true
@@ -82,10 +80,10 @@ test('Axis Props + Dimension Props', async (t) => {
   t.deepEqual(style, expected)
 })
 
-test('Axis Props + Dimension Props 2', async (t) => {
+test('Axis Props + Dimension Props 2', t => {
   const props = {
     'marginL-16': true,
-    // overrides based on order
+    // Overrides based on order
     'marginX-8': true
   }
 
@@ -98,10 +96,10 @@ test('Axis Props + Dimension Props 2', async (t) => {
   t.deepEqual(style, expected)
 })
 
-test('Axis Props + Dimension Props 3', async (t) => {
+test('Axis Props + Dimension Props 3', t => {
   const props = {
     'marginX-8': true,
-    // overrides based on order
+    // Overrides based on order
     'marginL-16': true
   }
 
@@ -114,10 +112,10 @@ test('Axis Props + Dimension Props 3', async (t) => {
   t.deepEqual(style, expected)
 })
 
-test('No dimension suffix', async (t) => {
+test('No dimension suffix', t => {
   const props = {
     'marginX-8': true,
-    // overrides based on order
+    // Overrides based on order
     'marginL-16': true
   }
 
@@ -130,7 +128,7 @@ test('No dimension suffix', async (t) => {
   t.deepEqual(style, expected)
 })
 
-test('Test composed style', async (t) => {
+test('Test composed style', t => {
   const composedSet = [
     {
       props: {
@@ -170,8 +168,8 @@ test('Test composed style', async (t) => {
     }
   ]
 
-  composedSet.forEach((setItem) => {
+  for (const setItem of composedSet) {
     const { style } = modsToStyle(setItem.props, '')
     t.deepEqual(style, setItem.expected)
-  })
+  }
 })
