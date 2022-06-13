@@ -48,19 +48,19 @@ Getting to how you can create the above `Box` component.
 Not always needed unless you are working with a platform that needs you to change the dimension units from pixels to something else, let's say `rem` or an empty string for something like react-native
 
 ```jsx
-import { View } from "react-native";
-import { modsToStyle } from "spacery";
+import { View } from 'react-native'
+import { modsToStyle } from 'spacery'
 
 const Box = function ({ children, ...props }) {
-  const { style, sanitizedProps } = modsToStyle(props, ""); // pass dimension as an empty string so it used the actual numbers
+  const { style, sanitizedProps } = modsToStyle(props, '') // pass dimension as an empty string so it used the actual numbers
   return (
     <View style={style} {...sanitizedProps}>
       {children}
     </View>
-  );
-};
+  )
+}
 
-export default Box;
+export default Box
 ```
 
 ### Spacery Component
@@ -68,12 +68,12 @@ export default Box;
 What you'll be using the most if you work with the web since the component already handles the basics of being a wrapper box components
 
 ```jsx
-import { View } from "react-native";
-import { Spacery } from "spacery";
+import { View } from 'react-native'
+import { Spacery } from 'spacery'
 
-const Box = Spacery;
+const Box = Spacery
 
-export default Box;
+export default Box
 ```
 
 ### Spacery HOC
@@ -81,8 +81,8 @@ export default Box;
 This is another way of using spacery where, in case you don't want to do it manually but want to support something that's not the web, aka `react-native`
 
 ```jsx
-import { View } from "react-native";
-import { withSpacery } from "spacery";
+import { View } from 'react-native'
+import { withSpacery } from 'spacery'
 
 const Box = withSpacery(function ({ style, children, ...props }) {
   // the `style` prop already handles the overwritten values that might come from the Box component
@@ -90,12 +90,12 @@ const Box = withSpacery(function ({ style, children, ...props }) {
     <View style={style} {...props}>
       {children}
     </View>
-  );
-}, "");
+  )
+}, '')
 // empty string, so it doesn't add `px`
 // to the end of the units, like it would for the web style
 
-export default Box;
+export default Box
 ```
 
 ## License

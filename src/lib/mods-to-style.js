@@ -5,7 +5,7 @@ const YPattern = /Y$/
 
 const toDims = (v, u) => (u ? v + u : +v)
 
-const normalizeModifer = (prop) => {
+const normalizeModifer = prop => {
   let x = prop
   return (
     (x.endsWith('T') && (x += 'op')) ||
@@ -26,16 +26,14 @@ const normalizeModifer = (prop) => {
  * @returns result.style
  * @returns result.santizedProps
  */
-export function modsToStyle (mods, dimUnit = 'px') {
+export function modsToStyle(mods, dimUnit = 'px') {
   const style = {}
 
   // collection of props that do not have the above modifiers
   const sanitizedProps = { ...mods }
 
   for (const key of Object.keys(mods)) {
-    if (!(mgnPattern.test(key) || padPattern.test(key))) {
-      continue
-    }
+    if (!(mgnPattern.test(key) || padPattern.test(key))) continue
 
     // delete from the sanitize as it's a valid modifier
     delete sanitizedProps[key]
