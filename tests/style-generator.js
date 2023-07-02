@@ -15,6 +15,19 @@ test('Direction Props | Single', t => {
   t.deepEqual(style, expected)
 })
 
+test('Direction Props with Strings | Single', t => {
+  const props = {
+    'marginL-auto': true,
+  }
+
+  const expected = {
+    marginLeft: 'auto',
+  }
+
+  const { style } = modsToStyle(props, 'px')
+  t.deepEqual(style, expected)
+})
+
 test('Direction Props | Multiple', t => {
   const props = {
     'marginT-8': true,

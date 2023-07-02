@@ -3,7 +3,15 @@ const padPattern = /(padding)[TBRLXY]*-/
 const XPattern = /X$/
 const YPattern = /Y$/
 
-const toDims = (v, u) => (u ? v + u : +v)
+const toDims = (value, unit) =>{
+  if(isNaN(value)){
+    return value
+  }
+  if(unit){
+    return value + unit
+  } 
+  return +value
+}
 
 const normalizeModifer = prop => {
   let x = prop
@@ -22,9 +30,7 @@ const normalizeModifer = prop => {
  * {margin-10:true} into a style object => {margin:10} with an appended dimensionUnit (eg: "px")
  * @param {Object} mods Object of spacing modifiers
  * @param {string} dimUnit Dimension to append to the style value `(default: "px")
- * @returns result
- * @returns result.style
- * @returns result.santizedProps
+ * @returns {Object} result
  */
 export function modsToStyle(mods, dimUnit = 'px') {
   const style = {}
@@ -42,7 +48,9 @@ export function modsToStyle(mods, dimUnit = 'px') {
 
     // Change the accessor to it's style equivalent eg: marginR => marginRight
     const modifier = normalizeModifer(propSplits[0])
+
     propSplits[1] = propSplits[1] || 0
+    
 
     // If not one of the above then check for accessor as X or Y , eg: marginX or marginY
     if (XPattern.test(modifier)) {
