@@ -3,13 +3,11 @@ const padPattern = /(padding)[TBRLXY]*-/
 const XPattern = /X$/
 const YPattern = /Y$/
 
-const toDims = (value, unit) =>{
-  if(isNaN(value)){
-    return value
-  }
-  if(unit){
-    return value + unit
-  } 
+const toDims = (value, unit) => {
+  if (isNaN(value)) return value
+
+  if (unit) return value + unit
+
   return +value
 }
 
@@ -50,7 +48,6 @@ export function modsToStyle(mods, dimUnit = 'px') {
     const modifier = normalizeModifer(propSplits[0])
 
     propSplits[1] = propSplits[1] || 0
-    
 
     // If not one of the above then check for accessor as X or Y , eg: marginX or marginY
     if (XPattern.test(modifier)) {
